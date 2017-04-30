@@ -65,7 +65,18 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         //Modificaremos los datos del Usuario
-        return view('usuarios/edit_user', ['users'=> '$users', 'usuario'=>'GET']);
+        $id = $request->input("id");
+        $user = User::find($id);
+        $user->name = $request->input("name");
+        $user->last_name = $request->input("last_name");
+        $user->email = $request->input("email");
+        $user->relevant_person = $request->input("relevant_person");
+        $user->number = $request->input("number");
+        $user->save();
+
+        $users = DB::table('users')->where('id', $id)->get();
+    
+        return view('usuarios/edit_user', ['users'=> $users, 'id'=>$id]);
     }
 
     /**

@@ -29,13 +29,17 @@ Route::get('admin/crear', function(){
 
 Route::get('usuarios/administrar','UserController@show')->name('administrar_usuarios');
 
-Route::get('usuarios/editar/',function(Request $request){
+Route::get('usuarios/editar',function(Request $request){
 
-	$users = DB::table('users')->where('id', $request->input("id"))->get();
+	$id = $request->input("id");
+
+	$users = DB::table('users')->where('id', $id)->get();
 	
-	return view('usuarios/edit_user', ['users'=> $users, 'usuario'=>'GET']);
+	return view('usuarios/edit_user', ['users'=> $users, 'id'=>$id]);
+
 })->name('redirect_user_edit');
 
+Route::post('usuarios/editar','UserController@update')->name('edit_user');
 
 Route::post('usuarios/administrar','UserController@edit')->name('administrar_usuarios_editar');
 //----------------------------------------------------//

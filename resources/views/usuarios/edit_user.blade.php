@@ -8,9 +8,10 @@
                 <div class="panel-heading">Editar Usuario</div>
                 <div class="panel-body">
                 @foreach($users as $user)
-                    <form class="form-horizontal" role="form" method="POST" action="">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('edit_user') }}">
                         {{ csrf_field() }}
 
+                        
                         <div class="form-group">
                             <label for="rut" class="col-md-3 control-label">Rut:</label>
                             <div class="col-md-6">
@@ -18,13 +19,14 @@
                             </div>
                         </div>
 
+                            <input type="hidden" class="form-control" name="id" value="{{ $user->id }}">
+
                         <div class="form-group">
                             <label for="name" class="col-md-3 control-label">Nombre:</label>
                             <div class="col-md-6">
                                 <input id="name" type="text" maxlength="20" class="form-control" name="name" 
                                 value="{{ $user->name }}" required="required" placeholder="Ingrese solamente primer nombre" autofocus >
                             </div>
-
                         </div>
 
                         <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
@@ -42,8 +44,6 @@
                                 <input id="email" type="email" class="form-control" name="email"  placeholder="Ejemplo: formato@ejemplo.com" value="{{ $user->email }}" required>
                             </div>
                         </div>
-
-                        <input id="id_profile" type="hidden" class="form-control" name="id_profile" value="1">
 
                         <div class="form-group{{ $errors->has('relevant_person') ? ' has-error' : '' }}">
                             <label for="relevant_person" class="col-md-3 control-label">Persona Relevante:</label>
