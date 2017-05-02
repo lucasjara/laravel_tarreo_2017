@@ -74,7 +74,7 @@
                                 <button type="submit" class="btn btn-primary col-md-offset-2">
                                     Editar
                                 </button>
-                                <button type="submit" class="btn btn-danger pull-right col-md-offset-2" >
+                                <button type="submit" class="btn btn-danger pull-right col-md-offset-2" disabled>
                                     Desabilitar
                                 </button>
                             </div>

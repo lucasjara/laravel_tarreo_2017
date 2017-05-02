@@ -1,6 +1,10 @@
 @extends('base')
 
 @section('content')
+
+@foreach($categories as $category)
+	{{ $category->name }}
+@endforeach
 <center>
 	<div class="container">
 		<div class="row">
@@ -29,41 +33,31 @@
 								<tr>
 									<th>ID</th>
 									<th>NOMBRE</th>
-									<th>PC</th>
-									<th>CONSOLA</th>  
-									<th>TRIVIA</th>
+									@foreach($categories as $category)
+										<th>{{ $category->name }}</th>
+									@endforeach
 									<th>TOTAL</th>
 									<th>ACCION</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr align="center">
-									<td>1</td>
-									<td>LJARA</td>
-									<td>70</td>
-									<td>10</td>
-									<td>5</td>
-									<td>85</td>
-									<td><input type="button" class="btn btn-primary col-md-5" name="editar" value="editar"><input type="button" name="eliminar" class="btn btn-danger col-md-5" value="eliminar"></td>
-								</tr>
-								<tr align="center">
-									<td>2</td>
-									<td>JAKESILLO</td>
-									<td>100</td>
-									<td>10</td>
-									<td>0</td>
-									<td>110</td>
-									<td><input type="button" class="btn btn-primary col-md-5" name="editar" value="editar"><input type="button" name="eliminar" class="btn btn-danger col-md-5" value="eliminar"></td>
-								</tr>
-								<tr align="center">
-									<td>3</td>
-									<td>DIOS</td>
-									<td>20</td>
-									<td>50</td>
-									<td>40</td>
-									<td>110</td>
-									<td><input type="button" class="btn btn-primary col-md-5" name="editar" value="editar"><input type="button" name="eliminar" class="btn btn-danger col-md-5" value="eliminar"></td>
-								</tr>
+									@php
+										$z = 0;
+									@endphp
+								@for ($i = 0; $i < 3; $i++)
+									<tr>	<!-- ID|NOMBRE|CATEGORIA|TOTAL|ACCION-->
+										<td>{{ $id[$i] }}</td>
+										<td>{{ $nombre[$i] }}</td>
+    									@for ($y = 0; $y < 2; $y++)
+    										<td>{{ $puntajes[$z] }}</td>
+    										@php
+												$z =$z+1;
+											@endphp
+										@endfor
+										<td>{{ $total[$i] }}</td>
+										<td>ACCIÓN</td>
+									</tr>
+								@endfor
 							</tbody>
 						</table>
 					</div>

@@ -13,7 +13,7 @@ Route::get('/competencias', function(){
 })->name('administrar_competencias');
 
 Route::get('/competencias/administrar', function(){
-	return view('administracion/puntaje');
+	return view('administracion/puntajes');
 })->name('administrar_puntaje');
 //---------------------------------------------
 
@@ -44,6 +44,13 @@ Route::post('usuarios/editar','UserController@update')->name('edit_user');
 Route::post('usuarios/administrar','UserController@edit')->name('administrar_usuarios_editar');
 //----------------------------------------------------//
 
+
+//----------------PUNTAJES--------------------
+
+Route::get('/competencias/administrar','ScoreController@index')->name('administrar_puntaje');
+
+
+//--------------------------------------------
 //----------PLANTILLA BASE-------------------- 
 Route::get('/', function(){
 	return view('base');
