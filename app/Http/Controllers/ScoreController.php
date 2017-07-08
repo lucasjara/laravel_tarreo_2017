@@ -16,16 +16,17 @@ class ScoreController extends Controller
      */
     public function index()
     {
-        $sql = 'SELECT DISTINCT categories.name FROM categories';
+       $sql = 'SELECT DISTINCT categories.name FROM categories';
         //LISTADO CATEGORIAS [CONSOLA,PC,ETC..]
         $categories = DB::select($sql);
 
-        $sql = 'SELECT DISTINCT users.id FROM users';
+        $sql = 'SELECT DISTINCT users.id, users.name, users.last_name FROM users';
         //LISTADO USUARIOS
         $users = DB::select($sql);
         $numero=0;
         $cantidad=0;
         foreach ($users as $user) {
+            $acumulado=0;
             foreach ($categories as $category) {
                 $sql = 'SELECT SUM(scores.points)as puntos FROM scores, categories where scores.id_user='.$user->id.' AND categories.name="'.$category->name.'" AND categories.id=scores.id_category';
                 $points = DB::SELECT($sql);
@@ -34,20 +35,19 @@ class ScoreController extends Controller
                         $puntajes[$cantidad] = "0";
                     }else{
                         $puntajes[$cantidad] = $point->puntos;
-                    }   
-                    $cantidad++; 
-                }                
+                    }
+                    $acumulado=$puntajes[$cantidad]+$acumulado;
+                    $cantidad++;
+                }
             }
+            //posiciones arreglo
             $id[$numero] = $user->id;
-            $name = User::find($user->id)->name;
-            $nombre[$numero] = $name;
-            //categorias
-            $total[$numero] = 10;
+            $nombre[$numero] = $user->name;
+            $apellido[$numero] = $user->last_name;
+            $total[$numero] = $acumulado;
             $numero++;
         }
-        var_dump($nombre[1]);
-        return view('administracion/puntajes', ['categories'=> $categories, 'usuario'=>'GET', 'id'=> $id, 'nombre' => $nombre,
-         'total' => $total, 'puntajes'=>$puntajes]);
+         return view('administracion/puntaje',['categories'=>$categories, 'id'=>$id,'nombre'=>$nombre,'apellido'=> $apellido ,'total'=>$total,'puntajes'=>$puntajes,'numero'=>$numero]);
     }
 
     /**
@@ -79,7 +79,7 @@ class ScoreController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
