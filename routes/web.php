@@ -8,12 +8,12 @@ Auth::routes();
 //-------------------------------------------------
 
 //-----------------ADMINISTRACION--------------
-Route::get('/competencias', function(){
-	return view('administracion/competencia');
-})->name('administrar_competencias');
+Route::get('/competencias','ScoreController@puntajes')->name('administrar_competencias');
 
 Route::get('administracion/puntaje','ScoreController@index')->name('administrar_puntaje');
 
+Route::get('administracion/registro', function() {return view('administracion/registro');})->name('registro_admin');
+Route::get('administracion/detalle/{id}','ScoreController@detalle')->where(['id' => '[0-9]+'])->name('administrar');
 //---------------------------------------------
 
 

@@ -48,14 +48,17 @@
 										@endphp
 									@for($i = 0;$i < $numero; $i++)
 									<tr>
-										<td>{{ $id[0] }}</td>
-										<td>{{ $nombre[0] }}</td>
-										<td>{{ $apellido[0] }}</td>
+										<td>{{ $id[$i] }}</td>
+										<td>{{ $nombre[$i] }}</td>
+										<td>{{ $apellido[$i] }}</td>
 										@for ($y = 0; $y < 2; $y++)
-										<td>{{ $puntajes[$y] }}</td>
+										<td>{{ $puntajes[$z] }}</td>
+											@php
+												$z++;
+											@endphp
 										@endfor
 										<td>{{ $total[$contador] }}</td>
-										<td><button class="btn btn-primary">Editar</button><button class="btn btn-danger">Eliminar</button></td>
+										<td><a href="{{ route('administrar', $id[$i]) }}"><button class="btn btn-primary">Ver Detalle</button></a></td>
 									</tr>
 										@php
 											$contador++;

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Score;
 use App\User;
+use App\Competition;
 
 class ScoreController extends Controller
 {
@@ -50,69 +51,16 @@ class ScoreController extends Controller
          return view('administracion/puntaje',['categories'=>$categories, 'id'=>$id,'nombre'=>$nombre,'apellido'=> $apellido ,'total'=>$total,'puntajes'=>$puntajes,'numero'=>$numero]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function puntajes(){
+        //TRAEMOS TODAS LAS CATEGORIAS 
+        $sql = 'SELECT c.id, c.name, com.name as competencia from categories c, competitions com WHERE c.id_competition=com.id';
+        $categories = DB::select($sql);
+        return view('administracion/competencia',['categories'=>$categories]);
     }
+    public function detalle($id){
+        $sql ="SELECT scores.id,categories.name as categoria ,competitions.name as nombre,scores.points as total FROM `scores`, categories, competitions WHERE scores.id_user='$id' AND scores.id_category=categories.id AND categories.id_competition=competitions.id;";
+        $datos = DB::select($sql);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return view('administracion/detalle',['datos'=>$datos]);
     }
 }

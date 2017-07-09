@@ -43,8 +43,8 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i>Administracion<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index2.html">Administradores</a></li>
-                      <li><a href="{{ route('administrar_competencias') }}">Competencias</a></li>
+                      <li><a href="{{ route('registro_admin') }}">Registrar Administradores</a></li>
+                      <li><a href="{{ route('administrar_competencias') }}"> Listado Competencias</a></li>
                       <li><a href="{{ route('administrar_puntaje') }}">Puntajes</a></li>
                     </ul>
                   </li>
@@ -55,7 +55,7 @@
                   </li>
                   <li><a><i class="fa fa-home"></i>Reportes<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index.html">Puntajes</a></li>
+                      <li><a href="index.html">Reporte Generico</a></li>
                     </ul>
                   </li>
                 </ul>

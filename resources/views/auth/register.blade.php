@@ -14,7 +14,7 @@
                             <label for="name" class="col-md-3 control-label">Rut:</label>
 
                             <div class="col-md-6">
-                                <input id="rut" type="text" class="form-control" name="rut" maxlength="15" required="required" autofocus>
+                                <input id="rut" type="text" class="form-control" name="rut" maxlength="15" required="required" autofocus placeholder="Escribir Rut sin puntos y sin guión">
 
                                 @if ($errors->has('rut'))
                                 <span class="help-block">
@@ -27,7 +27,7 @@
                             <label for="name" class="col-md-3 control-label">Nombre:</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" minlength="3" maxlength="20" class="form-control" name="name" value="{{ old('name') }}" required="required" autofocus >
+                                <input id="name" type="text" minlength="3" maxlength="20" class="form-control" name="name" value="{{ old('name') }}" required="required" autofocus  placeholder="Ejemplo: Juanito." >
                             </div>
                         </div>
 
@@ -35,7 +35,7 @@
                             <label for="last_name" class="col-md-3 control-label">Apellidos:</label>
 
                             <div class="col-md-6">
-                                <input id="last_name" type="text" class="form-control" name="last_name" data-validate-words="2" value="{{ old('last_name') }}" maxlength="30" autofocus required="required"  placeholder="Ejemplo: Jara Espinoza." >
+                                <input id="last_name" type="text" class="form-control" name="last_name" data-validate-words="2" value="{{ old('last_name') }}" maxlength="30" autofocus required="required"  placeholder="Ejemplo: Perez Pereira." >
                             </div>
                         </div>
 
@@ -43,7 +43,7 @@
                             <label for="email" class="col-md-3 control-label">Correo Electronico:</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required placeholder="correo@dominio.com">
 
                                 @if ($errors->has('email'))
                                 <span class="help-block">
@@ -60,8 +60,8 @@
                             <label for="relevant_person" class="col-md-3 control-label">Persona Relevante:</label>
 
                             <div class="col-md-6">
-                                <input id="relevant_person" type="text" class="form-control" data-validate-length-range="6" name="relevant_person" 
-                                value="{{ old('relevant_person') }}" required="required" autofocus>
+                                <input id="relevant_person" type="text" class="form-control" data-validate-length-range="6" name="relevant_person"  
+                                value="{{ old('relevant_person') }}" required="required" autofocus placeholder="Madre, Padre, Abuelo,Amigo,etc.">
 
                                 @if ($errors->has('relevant_person'))
                                 <span class="help-block">
@@ -76,7 +76,7 @@
 
                             <div class="col-md-6">
                                 <input id="number" type="text" class="form-control" data-validate-length-range="6" name="number" 
-                                value="{{ old('user') }}" required="required" autofocus>
+                                value="{{ old('user') }}" required="required" autofocus placeholder="+569 11223344">
 
                                 @if ($errors->has('number'))
                                 <span class="help-block">
@@ -91,7 +91,7 @@
 
                             <div class="col-md-6">
                                 <input id="user" type="text" class="form-control" data-validate-length-range="6" name="user" 
-                                value="{{ old('user') }}" required="required" autofocus>
+                                value="{{ old('user') }}" required="required" autofocus placeholder="Ingrese Nickname">
 
                                 @if ($errors->has('user'))
                                 <span class="help-block">
@@ -104,7 +104,7 @@
                             <label for="password" class="col-md-3 control-label">Contraseña:</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="password" type="password" class="form-control" name="password" required >
 
                                 @if ($errors->has('password'))
                                 <span class="help-block">
@@ -123,13 +123,13 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-3">
+                            <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Registrar
                                 </button>
-                                <!--<button type="reset" class="btn btn-success col-md-offset-2">
+                                <button type="reset" class="btn btn-success col-md-offset-2">
                                     Limpiar
-                                </button> -->
+                                </button>
                             </div>
                         </div>
                     </form>

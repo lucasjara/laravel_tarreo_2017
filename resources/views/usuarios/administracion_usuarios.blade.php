@@ -1,8 +1,9 @@
 @extends('base')
 
 @section('content')
-<h3>{{ $usuario }}</h3>
 <center>
+	<h1>Administración Usuarios</h1>
+	<hr>
 	<div class="container">
 		<div class="row">
 			<div class="panel panel-primary">
@@ -23,6 +24,7 @@
 					</form>
 				</div>
 			</div>
+			<hr>
 			<div class="panel panel-primary">
 				<div class="panel-heading">Administrar Usuarios</div>
 				<div class="panel-body">
