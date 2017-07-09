@@ -41,7 +41,7 @@
                             <label for="email" class="col-md-3 control-label">Correo Electronico:</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email"  placeholder="Ejemplo: formato@ejemplo.com" value="{{ $user->email }}" required>
+                                <input id="email" type="email" class="form-control" name="email"  placeholder="Ejemplo: formato@ejemplo.com" value="{{ $user->email }}" disabled>
                             </div>
                         </div>
 

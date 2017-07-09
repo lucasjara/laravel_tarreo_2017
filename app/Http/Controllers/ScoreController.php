@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Score;
 use App\User;
 use App\Competition;
+use App\Category;
 
 class ScoreController extends Controller
 {
@@ -51,16 +52,42 @@ class ScoreController extends Controller
          return view('administracion/puntaje',['categories'=>$categories, 'id'=>$id,'nombre'=>$nombre,'apellido'=> $apellido ,'total'=>$total,'puntajes'=>$puntajes,'numero'=>$numero]);
     }
 
-    public function puntajes(){
-        //TRAEMOS TODAS LAS CATEGORIAS 
+    public static function DevuelveCategoria(){
         $sql = 'SELECT c.id, c.name, com.name as competencia from categories c, competitions com WHERE c.id_competition=com.id';
         $categories = DB::select($sql);
+        return $categories;
+    }
+
+    public function puntajes(){
+        $categories = ScoreController::DevuelveCategoria();
         return view('administracion/competencia',['categories'=>$categories]);
     }
+
     public function detalle($id){
         $sql ="SELECT scores.id,categories.name as categoria ,competitions.name as nombre,scores.points as total FROM `scores`, categories, competitions WHERE scores.id_user='$id' AND scores.id_category=categories.id AND categories.id_competition=competitions.id;";
         $datos = DB::select($sql);
-
         return view('administracion/detalle',['datos'=>$datos]);
     }
+    
+    public function registro_competencia(){
+        $categories = ScoreController::DevuelveCategoria();
+        return view('administracion/competencias/registro',['categories'=>$categories]);
+    }
+
+    public function registrar_competencia(Request $request){
+
+        $name = $request->input('name');
+        //Registrar Competencia
+        $competencia = new Competition;
+        $competencia->name = $name;
+        $competencia->save();
+        //Registro de categoria para torneo
+        $categoria = new Category;
+        $categoria->name = $request->input('category_name');
+            $competition = Competition::where('name', '=', $name)->first();
+        $categoria->id_competition = $competition->id;
+        $categoria->save();
+        puntajes();
+    }
+
 }

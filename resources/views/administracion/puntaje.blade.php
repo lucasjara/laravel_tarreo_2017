@@ -58,7 +58,7 @@
 											@endphp
 										@endfor
 										<td>{{ $total[$contador] }}</td>
-										<td><a href="{{ route('administrar', $id[$i]) }}"><button class="btn btn-primary">Ver Detalle</button></a></td>
+										<td><a href="{{ route('administrar', $id[$i]) }}"><button class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"> VER DETALLE</button></a></td>
 									</tr>
 										@php
 											$contador++;

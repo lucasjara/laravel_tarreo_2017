@@ -15,8 +15,10 @@ Route::get('administracion/puntaje','ScoreController@index')->name('administrar_
 Route::get('administracion/registro', function() {return view('administracion/registro');})->name('registro_admin');
 Route::get('administracion/detalle/{id}','ScoreController@detalle')->where(['id' => '[0-9]+'])->name('administrar');
 //---------------------------------------------
-
-
+//---------------COMPETENCIA-REGISTRO----------
+Route::get('administracion/competencias/registro','ScoreController@registro_competencia')->name('agregar_competencia');
+Route::post('administracion/competencias/registro','ScoreController@registrar_competencia')->name('registro_competencia');
+//---------------------------------------------
 //---------------ADMINISTRADOR----------------
 Route::get('admin/crear', function(){
 	return view('admin/crear');

@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
 	<div class="col-lg-5 col-lg-offset-3">
-		<h1 style="text-align: center;">Listado Competencias</h1></div><div class="col-lg-1 col-lg-offset-2"><button style="margin-top: 20px;" class="btn btn-success">AGREGAR</button></div>
+		<h1 style="text-align: center;">Listado Competencias</h1></div><div class="col-lg-1 col-lg-offset-2"><a href="{{ route('agregar_competencia') }}"><button style="margin-top: 20px;" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>AGREGAR</button></a></div>
 	</div>
 <hr>
 	<div class="container">
@@ -26,7 +26,7 @@
 									<td>{{ $category->id }}</td>
 									<td>{{ $category->name }}</td>
 									<td>{{ $category->competencia }}</td>
-									<td><button type="submit" class="btn btn-primary btn-sm">MODIFICAR</button><button type="submit" class="btn btn-danger btn-sm">ELIMINAR</button></td>	
+									<td><button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"> MODIFICAR</button><button type="submit" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"> ELIMINAR</button></td>	
 								</tr>
 							<?php endforeach ?>
 
